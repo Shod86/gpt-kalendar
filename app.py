@@ -18,7 +18,12 @@ client = OpenAI(api_key=openai_api_key)
 
 # Načti Google Credentials
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
-creds = service_account.Credentials.from_service_account_file("credentials.json", scopes=SCOPES)
+import json
+from google.oauth2 import service_account
+import os
+
+credentials_info = json.loads(os.environ["GOOGLE_CREDENTIALS"])
+creds = service_account.Credentials.from_service_account_info(credentials_info, scopes=SCOPES)
 calendar_service = build("calendar", "v3", credentials=creds)
 calendar_id = "primary"  # nebo konkrétní ID kalendáře
 
