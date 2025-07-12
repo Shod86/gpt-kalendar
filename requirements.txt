@@ -1,0 +1,6 @@
+flask
+openai>=1.0.0
+python-dotenv
+google-api-python-client
+google-auth
+google-auth-oauthlib
